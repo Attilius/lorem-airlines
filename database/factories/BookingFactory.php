@@ -25,8 +25,8 @@ class BookingFactory extends Factory
     public function definition()
     {
         return [
-            'departure_from' => $this->faker->locale(),
-            'arriving_at' => $this->faker->locale(),
+            'departure_from' => $this->faker->city(),
+            'arriving_at' => $this->faker->city(),
             'departure_date' =>$this->faker->date(),
             'return_date' =>$this->faker->date(),
             'passengers' => $this->faker->word(),
