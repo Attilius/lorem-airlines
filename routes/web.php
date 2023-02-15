@@ -27,7 +27,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/', function () {
-        return Inertia::render('Dashboard');
+    Route::get('/home', function () {
+        return Inertia::render('Home');
     })->name('dashboard');
 });
