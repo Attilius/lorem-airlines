@@ -30,9 +30,8 @@ class BookingFactory extends Factory
             'departure_date' =>$this->faker->date(),
             'return_date' =>$this->faker->date(),
             'passengers' => $this->faker->word(),
-            'cabin' => $this->faker->word(),
-            'one_way' => $this->faker->boolean,
-            'round_trip' => $this->faker->boolean
+            'cabin_class' => $this->faker->word(),
+            'travel_type' => $this->faker->word(),
         ];
     }
 }
