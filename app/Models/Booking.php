@@ -17,8 +17,7 @@ class Booking extends Model
         'departure_date',
         'return_date',
         'passengers',
-        'cabin',
-        'one_way',
-        'round_trip'
+        'cabin_class',
+        'travel_type',
     ];
 }
