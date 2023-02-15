@@ -22,8 +22,7 @@ return new class extends Migration
             $table->date('return_date');
             $table->string('passengers');
             $table->string('cabin_class');
-            $table->boolean('one_way');
-            $table->boolean('round_trip');
+            $table->string('travel_type');
             $table->timestamps();
         });
     }
