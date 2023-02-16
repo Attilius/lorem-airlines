@@ -17,7 +17,10 @@ class PassengerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->word(),
+            'firstName' => $this->faker->firstName(),
+            'lastName' => $this->faker->lastName(),
+            'dateOfBirth' => $this->faker->date,
         ];
     }
 }
