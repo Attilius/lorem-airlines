@@ -36,7 +36,7 @@ class FlightFactory extends Factory
             'inflight_services' => $this->faker->text(22),
             'aircraft' => $this->faker->word(),
             'flight_type' => $this->faker->word(),
-            'price' => $this->faker->word()
+            'price' => $this->faker->word(),
         ];
     }
 }
