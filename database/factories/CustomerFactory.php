@@ -2,13 +2,21 @@
 
 namespace Database\Factories;
 
+use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Customer>
+ * @extends Factory<Customer>
  */
 class CustomerFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Customer::class;
+
     /**
      * Define the model's default state.
      *
@@ -16,14 +24,19 @@ class CustomerFactory extends Factory
      */
     public function definition()
     {
+        $type = $this->faker->randomElement(['B', 'I']);
+        $name = $type == 'I' ? $this->faker->name() : $this->faker->company();
+        $email = $type == 'I' ? $this->faker->email() : $this->faker->companyEmail();
+
         return [
-            'first_name' => $this->faker->firstName(),
-            'last_name' => $this->faker->lastName(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            'phone' => $this->faker->phoneNumber(),
-            'dateOfBirth' => $this->faker->dateTime()
+            'name' => $name,
+            'type' => $type,
+            'email' => $email,
+            'address' => $this->faker->streetAddress(),
+            'city' => $this->faker->city(),
+            'state' => $this->faker->state(),
+            'postal_code' => $this->faker->postcode(),
+            'phone' => $this->faker->phoneNumber()
         ];
     }
 }
