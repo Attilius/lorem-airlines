@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
+            $table->string('title'); // Jr, Mr, Mrs, Miss
+            $table->string('name');
+            $table->date('date_of_birth');
+            $table->string('type'); // Infant, Child, Youth, Adult, Senior
             $table->timestamps();
         });
     }
