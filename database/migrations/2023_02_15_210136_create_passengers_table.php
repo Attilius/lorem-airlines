@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('booking_id');
             $table->string('title'); // Jr, Mr, Mrs, Miss
             $table->string('name');
             $table->date('date_of_birth');
