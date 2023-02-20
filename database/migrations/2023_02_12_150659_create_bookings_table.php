@@ -14,14 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->string('booking_reference_id'); // For example: J39F3C
+            $table->increments('id');
             $table->foreignId('customer_id')->constrained();
+            $table->string('booking_reference_id'); // For example: J39F3C
             $table->string('departure_from');
             $table->string('arriving_at');
             $table->date('departure_date');
             $table->date('return_date');
-            $table->string('passengers');
             $table->string('cabin_class');
             $table->string('travel_type');
             $table->timestamps();
