@@ -30,6 +30,7 @@ return new class extends Migration
             $table->time('arrival_time');
             $table->string('flight_duration');
             $table->string('inflight_services');
+            $table->integer('available_places');
             $table->timestamps();
         });
     }
