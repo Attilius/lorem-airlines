@@ -31,4 +31,12 @@ class Customer extends Model
     {
         return $this->hasMany(Booking::class);
     }
+
+    /**
+     * @return HasMany
+     */
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }
