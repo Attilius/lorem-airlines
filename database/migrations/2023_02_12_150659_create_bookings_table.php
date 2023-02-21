@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreignId('customer_id')->constrained();
+            $table->unsignedInteger('customer_id');
             $table->string('booking_reference_id'); // For example: J39F3C
             $table->string('departure_from');
             $table->string('arriving_at');
@@ -24,6 +24,10 @@ return new class extends Migration
             $table->string('cabin_class');
             $table->string('travel_type');
             $table->timestamps();
+            $table->foreign('customer_id')
+                ->references('id')
+                ->on('customers')
+                ->onDelete('cascade');
         });
     }
 
