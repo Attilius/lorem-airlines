@@ -16,12 +16,14 @@ class Customer extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'name',
+        'type',
         'email',
-        'password',
+        'address',
+        'city',
+        'state',
+        'postal_code',
         'phone',
-        'dateOfBirth'
     ];
 
     /**
