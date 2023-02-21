@@ -34,7 +34,7 @@ class Booking extends Model
     /**
      * @return BelongsToMany
      */
-    public function passenger(): BelongsToMAny
+    public function passenger(): BelongsToMany
     {
         return $this->belongsToMany(Passenger::class);
     }
@@ -43,7 +43,7 @@ class Booking extends Model
     /**
      * @return BelongsToMany
      */
-    public function flight(): BelongsToMAny
+    public function flight(): BelongsToMany
     {
         return $this->belongsToMany(Flight::class);
     }
