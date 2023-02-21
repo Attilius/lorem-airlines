@@ -14,13 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('passengers', function (Blueprint $table) {
-            $table->id();
-            $table->foreignUuid('booking_id');
+            $table->increments('id');
+            $table->unsignedInteger('booking_id');
             $table->string('title'); // Jr, Mr, Mrs, Miss
             $table->string('name');
             $table->date('date_of_birth');
             $table->string('type'); // Infant, Child, Youth, Adult, Senior
             $table->timestamps();
+            $table->foreign('booking_id')
+                ->references('id')
+                ->on('bookings')
+                ->onDelete('cascade');
         });
     }
 
