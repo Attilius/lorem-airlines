@@ -53,7 +53,7 @@ class InvoiceFactory extends Factory
         return [
             'customer_id' => Customer::factory(),
             'amount' => $amount,
-            'currency' => $this->faker->currencyCode(),
+            'currency' => $currency,
             'status' => $status,
             'billed_date' => $this->faker->dateTimeThisDecade(),
             'paid_date' => $status == 'P' ? $this->faker->dateTimeThisDecade() : NULL,
