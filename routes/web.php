@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -22,6 +24,39 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/setup', function () {
+    $credentials = [
+        'email' => 'admin@admin.com',
+        'password' => 'password'
+    ];
+
+    if (!Auth::attempt($credentials)) {
+        $user = new User();
+
+        $user->name = 'admin';
+        $user->email = $credentials['email'];
+        $user->password = Hash::make($credentials['password']);
+
+        $user->save();
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            $adminToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
+            $updateToken = $user->createToken('update-token', ['create', 'update']);
+            $basicToken = $user->createToken('basic-token');
+
+            return [
+                'admin' => $adminToken->plainTextToken,
+                'update' => $updateToken->plainTextToken,
+                'basic' => $basicToken->plainTextToken,
+            ];
+        }
+    }
+    return redirect('/home');
+});
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -31,3 +66,4 @@ Route::middleware([
         return Inertia::render('Home');
     })->name('dashboard');
 });
+
