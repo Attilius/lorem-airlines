@@ -4,8 +4,8 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Filters\V1\CustomersFilter;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\StoreCustomerRequest;
-use App\Http\Requests\V1\UpdateCustomerRequest;
+use App\Http\Requests\V1\Customer\StoreCustomerRequest;
+use App\Http\Requests\V1\Customer\UpdateCustomerRequest;
 use App\Http\Resources\V1\CustomerCollection;
 use App\Http\Resources\V1\CustomerResource;
 use App\Models\Customer;
@@ -17,6 +17,7 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return Response|CustomerCollection
      */
     public function index(Request $request): Response|CustomerCollection
@@ -48,9 +49,9 @@ class CustomerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  StoreCustomerRequest  $request
-     * @return Response|CustomerResource
+     * @return CustomerResource
      */
-    public function store(StoreCustomerRequest $request): Response|CustomerResource
+    public function store(StoreCustomerRequest $request): CustomerResource
     {
         return new CustomerResource(Customer::create($request->all()));
     }
@@ -59,9 +60,9 @@ class CustomerController extends Controller
      * Display the specified resource.
      *
      * @param  Customer  $customer
-     * @return Response|CustomerResource
+     * @return CustomerResource
      */
-    public function show(Customer $customer): Response|CustomerResource
+    public function show(Customer $customer): CustomerResource
     {
         $includeInvoices = request()->query('includeInvoices');
 
@@ -86,23 +87,25 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\V1\UpdateCustomerRequest  $request
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @param  UpdateCustomerRequest  $request
+     * @param  Customer  $customer
+     * @return CustomerResource
      */
-    public function update(UpdateCustomerRequest $request, Customer $customer)
+    public function update(UpdateCustomerRequest $request, Customer $customer): CustomerResource
     {
         $customer->update($request->all());
+        return new CustomerResource($customer);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @param  Customer  $customer
+     * @return Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(Customer $customer): Response
     {
-        //
+        $customer->delete();
+        return response(null, 204);
     }
 }
