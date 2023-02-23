@@ -6,6 +6,7 @@ use App\Filters\V1\CustomersFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Customer\StoreCustomerRequest;
 use App\Http\Requests\V1\Customer\UpdateCustomerRequest;
+use App\Http\Requests\V1\Customer\DeleteCustomerRequest;
 use App\Http\Resources\V1\CustomerCollection;
 use App\Http\Resources\V1\CustomerResource;
 use App\Models\Customer;
@@ -18,9 +19,9 @@ class CustomerController extends Controller
      * Display a listing of the resource.
      *
      * @param Request $request
-     * @return Response|CustomerCollection
+     * @return CustomerCollection
      */
-    public function index(Request $request): Response|CustomerCollection
+    public function index(Request $request): CustomerCollection
     {
         $filter = new CustomersFilter();
         $filterItems = $filter->transform($request); //[['column', 'operator', 'value']]
@@ -76,7 +77,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  Customer  $customer
      * @return \Illuminate\Http\Response
      */
     public function edit(Customer $customer)
@@ -100,12 +101,17 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  DeleteCustomerRequest $request
      * @param  Customer  $customer
      * @return Response
      */
-    public function destroy(Customer $customer): Response
+    public function destroy(DeleteCustomerRequest $request, Customer $customer): Response
     {
-        $customer->delete();
-        return response(null, 204);
+        if ($request->authorize()) {
+            $customer->delete();
+            return response(null, 204);
+        }
+
+        return response('The request is unauthorized!', 401);
     }
 }
