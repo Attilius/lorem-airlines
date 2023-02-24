@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'username' => 'admin',
             'firstname' => 'Admin',
-            'lastname' => 'Admin',
         ]);
     }
 }
