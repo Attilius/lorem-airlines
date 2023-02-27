@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\Passenger\StorePassengerRequest;
+use App\Http\Requests\V1\Passenger\UpdatePassengerRequest;
 use App\Models\Passenger;
-use App\Http\Requests\StorePassengerRequest;
-use App\Http\Requests\UpdatePassengerRequest;
 
 class PassengerController extends Controller
 {
@@ -31,7 +32,7 @@ class PassengerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePassengerRequest  $request
+     * @param  \App\Http\Requests\V1\Passenger\StorePassengerRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StorePassengerRequest $request)
@@ -64,7 +65,7 @@ class PassengerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePassengerRequest  $request
+     * @param  \App\Http\Requests\V1\Passenger\UpdatePassengerRequest  $request
      * @param  \App\Models\Passenger  $passenger
      * @return \Illuminate\Http\Response
      */
