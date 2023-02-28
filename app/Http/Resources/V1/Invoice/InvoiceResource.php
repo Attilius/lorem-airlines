@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\V1;
+namespace App\Http\Resources\V1\Invoice;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Contracts\Support\Arrayable;
-use JsonSerializable;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use JsonSerializable;
 
 class InvoiceResource extends JsonResource
 {
