@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        config([
+            'auth.defaults.guard' => 'admin',
+            'auth.defaults.passwords' => 'admins'
+        ]);
     }
 }
