@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\Flight\StoreFlightRequest;
+use App\Http\Requests\V1\Flight\UpdateFlightRequest;
 use App\Models\Flight;
-use App\Http\Requests\StoreFlightRequest;
-use App\Http\Requests\UpdateFlightRequest;
 
 class FlightController extends Controller
 {
@@ -31,7 +32,7 @@ class FlightController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFlightRequest  $request
+     * @param  \App\Http\Requests\V1\Flight\StoreFlightRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreFlightRequest $request)
@@ -64,7 +65,7 @@ class FlightController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateFlightRequest  $request
+     * @param  \App\Http\Requests\V1\Flight\UpdateFlightRequest  $request
      * @param  \App\Models\Flight  $flight
      * @return \Illuminate\Http\Response
      */
