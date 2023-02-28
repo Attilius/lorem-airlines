@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Resources\V1;
+namespace App\Http\Resources\V1\Customer;
 
-use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\Request;
+use App\Http\Resources\V1\Invoice\InvoiceResource;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
 class CustomerResource extends JsonResource
@@ -21,7 +22,7 @@ class CustomerResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'type'=> $this->type,
-            'email' =>$this->email,
+            'email' => $this->email,
             'address' => $this->address,
             'city' => $this->city,
             'state' => $this->state,
