@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\Booking\StoreBookingRequest;
+use App\Http\Requests\V1\Booking\UpdateBookingRequest;
 use App\Models\Booking;
-use App\Http\Requests\StoreBookingRequest;
-use App\Http\Requests\UpdateBookingRequest;
 
 class BookingController extends Controller
 {
@@ -31,7 +32,7 @@ class BookingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBookingRequest  $request
+     * @param  \App\Http\Requests\V1\Booking\StoreBookingRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreBookingRequest $request)
@@ -64,7 +65,7 @@ class BookingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBookingRequest  $request
+     * @param  \App\Http\Requests\V1\Booking\UpdateBookingRequest  $request
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
