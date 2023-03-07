@@ -20,7 +20,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
         //Route::get('/user-management', [ProfileController::class, 'index'])->name('profile.index');
         //Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');
-        //Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
         Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
         Route::get('/{page}', [PageController::class, 'index'])->name('page');
     });
