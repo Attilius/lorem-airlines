@@ -24,7 +24,6 @@ Route::group(['prefix' => 'admin'], function () {
         //Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
         //Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
         //Route::patch('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
-        //Route::delete('/profile/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
         Route::get('/{page}', [PageController::class, 'index'])->name('page');
     });
