@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -31,18 +32,27 @@ class LoginController extends Controller
         return view('admin.auth.login');
     }
 
-    public function login(Request $request)
+    /**
+     * Logs the authenticated admin user in.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
+     */
+    public function login(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required'
         ]);
+
         if (Auth::guard('admin')->attempt([
-            'email' => $request->email,
-            'password' => $request->password
+            'email' => $request->get('email'),
+            'password' => $request->get('password')
         ], $request->get('remember'))) {
             return redirect()->intended(route('admin-welcome'));
         }
+
         return back()->withInput($request->only('email', 'remember'));
     }
 
