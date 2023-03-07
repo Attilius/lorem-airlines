@@ -18,7 +18,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('profile', ProfileController::class);
         //Route::get('/user-management', [UserProfileController::class, 'index'])->name('user-profile.index');
         Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
-        //Route::get('/user-management', [ProfileController::class, 'index'])->name('profile.index');
         Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
         Route::get('/{page}', [PageController::class, 'index'])->name('page');
     });
