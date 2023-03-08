@@ -9,10 +9,6 @@ use Illuminate\Contracts\View\View;
 
 class DashboardController extends Controller
 {
-        /**
-     *
-     */
-
     /**
      * Show the application dashboard.
      *
