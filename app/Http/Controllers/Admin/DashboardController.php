@@ -10,7 +10,6 @@ use Illuminate\Contracts\View\View;
 class DashboardController extends Controller
 {
         /**
-     * Create a new controller instance.
      *
      */
 
