@@ -20,4 +20,5 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
         Route::get('/{page}', [PageController::class, 'index'])->name('page');
     });
+
 });
