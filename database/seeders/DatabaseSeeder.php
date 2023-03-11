@@ -25,5 +25,4 @@ class DatabaseSeeder extends Seeder
             // CustomerSeeder::class,
         ]);
     }
-
 }
