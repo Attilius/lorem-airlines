@@ -20,7 +20,6 @@ class ProfileController extends Controller
      */
     public function index(): View
     {
-        //dd(Admin::all());
         return view("admin.pages.user-management", [
             'admins' =>  Admin::orderBy('created_at', 'desc')->get(),
             'customers' => Customer::orderBy('created_at')->paginate(10),
