@@ -3,7 +3,6 @@
 namespace App\Listeners;
 
 use App\Models\Customer;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Cache;
 
 class CustomerCacheListener
