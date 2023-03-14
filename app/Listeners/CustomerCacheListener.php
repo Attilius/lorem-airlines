@@ -22,10 +22,10 @@ class CustomerCacheListener
     /**
      * Handle the event.
      *
-     * @param  object $event
+     * @param object $event
      * @return void
      */
-    public function handle($event): void
+    public function handle(object $event): void
     {
         Cache::forget('customers');
 
