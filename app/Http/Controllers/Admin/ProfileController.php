@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\CustomerCreated;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Customer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -20,9 +23,18 @@ class ProfileController extends Controller
      */
     public function index(): View
     {
+        //Event::dispatch(new CustomerCreated());
+        $admins = Cache::remember('admins', 3600, function () {
+            return Admin::orderBy('created_at', 'desc')->get();
+        });
+
+        $customers = Cache::remember('customers-page-'. request('page', 1), 3600, function (){
+           return Customer::orderBy('created_at')->paginate(10);
+        });
+
         return view("admin.pages.user-management", [
-            'admins' =>  Admin::orderBy('created_at', 'desc')->get(),
-            'customers' => Customer::orderBy('created_at')->paginate(10),
+            'admins' => $admins /*Admin::orderBy('created_at', 'desc')->get()*/,
+            'customers' => $customers /*Customer::orderBy('created_at')->paginate(10)*/,
         ]);
     }
 
