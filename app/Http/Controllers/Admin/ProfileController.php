@@ -148,7 +148,7 @@ class ProfileController extends Controller
      * @param  int $id
      * @return RedirectResponse
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(int $id): RedirectResponse
     {
         Admin::destroy($id);
 
