@@ -6,20 +6,22 @@ use App\Events\CustomerCreated;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Customer;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return View
+     * @return Application|View|Factory
      */
     public function index(): View
     {
