@@ -145,7 +145,7 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int int $id
+     * @param  int $id
      * @return RedirectResponse
      */
     public function destroy($id): RedirectResponse
