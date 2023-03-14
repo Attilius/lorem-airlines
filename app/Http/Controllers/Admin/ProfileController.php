@@ -23,7 +23,7 @@ class ProfileController extends Controller
      *
      * @return Application|View|Factory
      */
-    public function index(): View
+    public function index(): Application|View|Factory
     {
         //Event::dispatch(new CustomerCreated());
         $admins = Cache::remember('admins', 3600, function () {
