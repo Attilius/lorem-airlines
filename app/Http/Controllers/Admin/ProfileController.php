@@ -124,7 +124,7 @@ class ProfileController extends Controller
      * @param  int $id
      * @return RedirectResponse
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, int $id): RedirectResponse
     {
         Admin::where('id', $id)->update([
             'username' => $request->get('username'),
