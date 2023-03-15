@@ -110,7 +110,7 @@ class ProfileController extends Controller
      * @param  int $id
      * @return View
      */
-    public function edit($id): View
+    public function edit(int $id): View
     {
         $admin = Admin::where('id', $id)->get();
 
