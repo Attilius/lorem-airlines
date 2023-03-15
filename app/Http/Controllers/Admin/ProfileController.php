@@ -35,7 +35,7 @@ class ProfileController extends Controller
         });
 
         return view("admin.pages.user-management", [
-            'admins' => $admins /*Admin::orderBy('created_at', 'desc')->get()*/,
+            'admins' => $admins,
             'customers' => $customers,
         ]);
     }
