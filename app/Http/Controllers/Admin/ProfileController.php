@@ -94,6 +94,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param int $id
      * @return View
      * Optional route parameter needs to have a default value eg: $id = 1
      */
