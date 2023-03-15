@@ -98,7 +98,7 @@ class ProfileController extends Controller
      * @return View
      * Optional route parameter needs to have a default value eg: $id = 1
      */
-    public function show($id): View
+    public function show(int $id): View
     {
         $admin = Admin::findOrFail($id);
 
