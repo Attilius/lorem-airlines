@@ -121,7 +121,7 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  Request  $request
-     * @param  int int $id
+     * @param  int $id
      * @return RedirectResponse
      */
     public function update(Request $request, $id): RedirectResponse
