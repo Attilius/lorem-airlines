@@ -25,5 +25,12 @@ interface CrudFilterInterface
      * @return void
      */
     public function update(string $key): void;
+
+    /**
+     * Delete an existing filter.
+     *
+     * @param string $key
+     * @return void
+     */
     public function remove(string $key): void;
 }
