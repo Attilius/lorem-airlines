@@ -11,6 +11,7 @@ abstract class BaseFilter implements CrudFilterInterface
     /**
      * Create a new filter and add to filter list.
      *
+     * @param string $filter
      * @return void
      */
     public function add(string $filter): void
