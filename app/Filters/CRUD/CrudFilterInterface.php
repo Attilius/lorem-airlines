@@ -12,7 +12,7 @@ interface CrudFilterInterface
     public function add(): void;
 
     /**
-     * List filters from history.
+     * List all filters from history.
      *
      * @return array
      */
@@ -23,6 +23,6 @@ interface CrudFilterInterface
      *
      * @return void
      */
-    public function update(): void;
+    public function update(string $key): void;
     public function remove(): void;
 }
