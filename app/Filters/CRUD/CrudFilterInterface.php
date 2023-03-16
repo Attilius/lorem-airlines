@@ -17,6 +17,12 @@ interface CrudFilterInterface
      * @return array
      */
     public function get(): array;
+
+    /**
+     * Update an existing filter.
+     *
+     * @return void
+     */
     public function update(): void;
     public function remove(): void;
 }
