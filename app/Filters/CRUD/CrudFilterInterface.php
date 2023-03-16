@@ -10,6 +10,12 @@ interface CrudFilterInterface
      * @return void
      */
     public function add(): void;
+
+    /**
+     * List filters from history.
+     *
+     * @return array
+     */
     public function get(): array;
     public function update(): void;
     public function remove(): void;
