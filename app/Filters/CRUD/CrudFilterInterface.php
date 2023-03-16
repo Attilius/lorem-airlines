@@ -9,7 +9,7 @@ interface CrudFilterInterface
      *
      * @return void
      */
-    public function add(): void;
+    public function add(string $filter): void;
 
     /**
      * List all filters from history.
