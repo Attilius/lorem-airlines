@@ -33,5 +33,5 @@ interface CrudFilterInterface
      * @param string $key
      * @return void
      */
-    public function remove(string $key): void;
+    public static function remove(string $key): void;
 }
