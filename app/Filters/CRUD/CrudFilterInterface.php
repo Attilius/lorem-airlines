@@ -17,7 +17,7 @@ interface CrudFilterInterface
      *
      * @return array
      */
-    public function get(): array;
+    public static function get(): array;
 
     /**
      * Update an existing filter.
