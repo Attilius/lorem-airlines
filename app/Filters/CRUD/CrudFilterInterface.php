@@ -2,15 +2,18 @@
 
 namespace App\Filters\CRUD;
 
+use App\Services\UniqueIdentifierKeyGeneratorInterface;
+
 interface CrudFilterInterface
 {
     /**
      * Create a new filter and add to filter list.
      *
+     * @param UniqueIdentifierKeyGeneratorInterface $keyGenerator
      * @param string $filter
      * @return void
      */
-    public static function add(string $filter): void;
+    public static function add(UniqueIdentifierKeyGeneratorInterface $keyGenerator, string $filter): void;
 
     /**
      * List all filters from history.
