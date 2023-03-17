@@ -2,6 +2,8 @@
 
 namespace App\Filters\CRUD;
 
+use App\Services\KeyGenerator;
+
 abstract class BaseFilter implements CrudFilterInterface
 {
     protected static array $filterHistory = [];
@@ -14,9 +16,12 @@ abstract class BaseFilter implements CrudFilterInterface
      * @param string $filter
      * @return void
      */
-    public function add(string $filter): void
+    public static function add(string $filter): void
     {
+        $uniqueId = KeyGenerator::generate(5);
+        $filterKey = explode(':', $filter)[0];
 
+        self::$filterHistory[strtolower($filterKey) .'_'. $uniqueId] = $filter;
     }
 
     /**
@@ -24,7 +29,7 @@ abstract class BaseFilter implements CrudFilterInterface
      *
      * @return array
      */
-    public function get(): array
+    public static function get(): array
     {
         return self::$filterHistory;
     }
@@ -33,22 +38,44 @@ abstract class BaseFilter implements CrudFilterInterface
      * Update an existing filter.
      *
      * @param string $key
+     * @param string $newFilterValue
      * @return void
      */
-    public function update(string $key): void
+    public static function update(string $key, string $newFilterValue): void
     {
+        if (! array_key_exists($key, self::$filterHistory)) {
+            #Todo create exception handler...
+            dd('Array key "'.$key.'" is not exists!');
+        }
 
+        $filter = self::$filterHistory[$key];
+        $filteredColumnName = explode(':', $filter)[0];
+
+        self::$filterHistory[$key] = $filteredColumnName .':'. $newFilterValue;
     }
 
     /**
-     * Delete an existing filter.
+     * Delete an existing filter or all filters.
      *
      * @param string $key
      * @return void
      */
-    public function remove(string $key): void
+    public static function remove(string $key): void
     {
-
+        switch ($key) {
+            case'all': {
+                self::$filterHistory = [];
+                self::$activeFilters = [];
+                break;
+            }
+            case'reset': {
+                self::$activeFilters = [];
+                break;
+            }
+            default: {
+                unset(self::$filterHistory[$key]);
+                break;
+            }
+        }
     }
-
 }
