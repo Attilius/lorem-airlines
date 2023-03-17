@@ -9,7 +9,12 @@ class CustomerFilter extends BaseFilter
 {
     private static array $columns = [];
 
-    public function index()
+    /**
+     * Return columns of customer table.
+     *
+     * @return array
+     */
+    public function index(): array
     {
         $customer = new Customer;
         $tableName = $customer->getTable();
