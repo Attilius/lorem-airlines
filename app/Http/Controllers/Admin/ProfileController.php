@@ -36,6 +36,7 @@ class ProfileController extends Controller
         $customers = Cache::remember('customers-page-'. request('page', 1), 3600, function (){
            return Customer::orderBy('created_at')->paginate(10);
         });
+
         return view("admin.pages.user-management", [
             'admins' => $admins,
             'customers' => $customers,
