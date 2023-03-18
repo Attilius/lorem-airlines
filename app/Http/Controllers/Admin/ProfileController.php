@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Events\CustomerCreated;
+use App\Filters\CRUD\CustomerFilter;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Customer;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Contracts\View\View;
+use App\Filters\CRUD\CustomerFilter as Filter;
 
 class ProfileController extends Controller
 {
@@ -25,6 +27,14 @@ class ProfileController extends Controller
      */
     public function index(): Application|View|Factory
     {
+        $filter = new Filter();
+
+        //$filter->index();
+
+        //Filter::update('city_3dhj7', 'Example');
+        //Filter::add('TEST:Test');
+        //Filter::remove('city_3dhj7');
+        //dd(Filter::get());
         //Event::dispatch(new CustomerCreated());
         $admins = Cache::remember('admins', 3600, function () {
             return Admin::orderBy('created_at', 'desc')->get();
@@ -33,10 +43,12 @@ class ProfileController extends Controller
         $customers = Cache::remember('customers-page-'. request('page', 1), 3600, function (){
            return Customer::orderBy('created_at')->paginate(10);
         });
-
+//dd($filter->index()['values']);
         return view("admin.pages.user-management", [
             'admins' => $admins,
             'customers' => $customers,
+            'columns' => $filter->index()['columns'],
+            'values' => $filter->index()['values']
         ]);
     }
 
