@@ -33,7 +33,6 @@ class ProfileController extends Controller
 
         //Filter::update('city_3dhj7', 'Example');
         //Filter::add('TEST:Test');
-        //Filter::remove('city_3dhj7');
         //Event::dispatch(new CustomerCreated());
         $admins = Cache::remember('admins', 3600, function () {
             return Admin::orderBy('created_at', 'desc')->get();
