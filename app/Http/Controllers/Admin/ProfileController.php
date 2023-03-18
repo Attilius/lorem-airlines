@@ -29,6 +29,7 @@ class ProfileController extends Controller
     {
         $filter = new Filter();
         //Event::dispatch(new CustomerCreated());
+
         $admins = Cache::remember('admins', 3600, function () {
             return Admin::orderBy('created_at', 'desc')->get();
         });
