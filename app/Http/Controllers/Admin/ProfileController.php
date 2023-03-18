@@ -28,7 +28,6 @@ class ProfileController extends Controller
     public function index(): Application|View|Factory
     {
         $filter = new Filter();
-
         //Event::dispatch(new CustomerCreated());
         $admins = Cache::remember('admins', 3600, function () {
             return Admin::orderBy('created_at', 'desc')->get();
