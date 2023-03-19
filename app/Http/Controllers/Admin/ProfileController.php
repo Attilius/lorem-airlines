@@ -64,9 +64,6 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-       /* attributes = $request->validate([
-        ]); */
 
         Admin::create([
             'username' => $request->username,
