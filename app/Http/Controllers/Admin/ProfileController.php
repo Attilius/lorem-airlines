@@ -71,7 +71,6 @@ class ProfileController extends Controller
             'lastname' => ['max:100'],
             'email' => ['required', 'email', 'max:255',  Rule::unique('admins')->ignore(auth()->user()->id),],
             'password' => ['required', 'min:8'],
-            'address' => ['max:100'],
         ]); */
 
         Admin::create([
