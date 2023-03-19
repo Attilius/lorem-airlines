@@ -68,7 +68,6 @@ class ProfileController extends Controller
        /* attributes = $request->validate([
             'username' => ['max:255', 'min:2'],
             'firstname' => ['max:100'],
-            'lastname' => ['max:100'],
         ]); */
 
         Admin::create([
