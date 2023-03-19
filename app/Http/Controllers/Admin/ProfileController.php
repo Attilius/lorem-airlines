@@ -76,7 +76,6 @@ class ProfileController extends Controller
             'city' => ['max:100'],
             'country' => ['max:100'],
             'postal' => ['max:100'],
-            'about' => ['max:255']
         ]); */
 
         Admin::create([
