@@ -73,7 +73,6 @@ class ProfileController extends Controller
             'password' => ['required', 'min:8'],
             'address' => ['max:100'],
             'phone' => ['max:100'],
-            'city' => ['max:100'],
         ]); */
 
         Admin::create([
