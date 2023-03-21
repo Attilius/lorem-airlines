@@ -42,7 +42,8 @@ class ProfileController extends Controller
             'admins' => $admins,
             'customers' => $customers,
             'columns' => $filter->index()['columns'],
-            'values' => $filter->index()['values']
+            'values' => $filter->index()['values'],
+            'filters' => $filter::get(),
         ]);
     }
 
