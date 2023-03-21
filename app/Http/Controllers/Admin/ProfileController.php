@@ -148,6 +148,5 @@ class ProfileController extends Controller
 
         return redirect(route('profile.index'))->with('message', 'Profile has been deleted!');
     }
-
 }
 
