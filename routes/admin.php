@@ -20,7 +20,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
         Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
         Route::get('/{page}', [PageController::class, 'index'])->name('page');
-        Route::post('/profile', [CustomerFilterController::class, 'store'])->name('customer-filter');
+        Route::post('/profile', [CustomerFilterController::class, 'store'])->name('customer-filter-store');
         Route::delete('/profile', [CustomerFilterController::class, 'destroy'])->name('customer-filter-delete');
     });
 
