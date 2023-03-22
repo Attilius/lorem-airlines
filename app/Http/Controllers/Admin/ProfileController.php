@@ -43,7 +43,7 @@ class ProfileController extends Controller
             'customers' => $customers,
             'columns' => $filter->index()['columns'],
             'values' => $filter->index()['values'],
-            'filters' => $filter::get(),
+            'filters' => !$filter::get()->isEmpty() ? $filter::get() : ['message' => 'List is empty'],
         ]);
     }
 
