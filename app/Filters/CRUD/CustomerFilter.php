@@ -9,6 +9,8 @@ class CustomerFilter extends BaseFilter
 {
     private static array $columns = [];
 
+    private static array $values = [];
+
     /**
      * Return columns of customer table.
      *
@@ -19,9 +21,54 @@ class CustomerFilter extends BaseFilter
         $customer = new Customer;
         $tableName = $customer->getTable();
 
-        self::$columns = Schema::getColumnListing($tableName);
+        foreach (Schema::getColumnListing($tableName) as $columnName) {
+            self::$columns[] = ucfirst($columnName);
+        }
+        //self::$columns = Schema::getColumnListing($tableName);
+        //dd(gettype(Schema::getColumnListing($tableName)));
         array_shift(self::$columns);
+        $this->setValues();
+        //dd($this->getValues());
+//dd(self::$values); #Todo filter values only from [type, country->'if have been', state, city] for select options
 
-        return self::$columns;
+        return ['columns' => self::$columns, 'values' => self::$values];
+    }
+
+    /**
+     * Getting all unique value from a table column.
+     *
+     * @param string $columnName
+     * @return array
+     */
+    private function getUniqueValues(string $columnName): array
+    {
+        $customer = new Customer();
+        $values = [];
+        foreach ($customer::all() as $customer) {
+            switch ($columnName) {
+                case 'Type': {
+                    $values[] = $customer->type;
+                    break;
+                }
+                case 'State': {
+                    $values[] = $customer->state;
+                    break;
+                }
+                case 'City': {
+                    $values[] = $customer->city;
+                    break;
+                }
+                default:{break;}
+            }
+        }
+
+        return array_unique($values);
+    }
+
+    private function setValues(): void
+    {
+        foreach (self::$columns as $column) {
+            self::$values[$column] = $this->getUniqueValues($column);
+        }
     }
 }
