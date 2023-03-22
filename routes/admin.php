@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
         Route::get('/{page}', [PageController::class, 'index'])->name('page');
         Route::post('/profile', [CustomerFilterController::class, 'store'])->name('customer-filter');
-        Route::delete('/profile', [CustomerFilterController::class, 'destroy'])->name('filter-delete');
+        Route::delete('/profile', [CustomerFilterController::class, 'destroy'])->name('customer-filter-delete');
     });
 
 });
