@@ -39,11 +39,11 @@ class KeyGenerator implements UniqueIdentifierKeyGeneratorInterface
     {
         for ($i = 0; $i < $keyLength; $i++) {
             if($i == 0 || $i % 2 == 0) {
-               $index_c = rand(0, count(self::$chars) - 1);
-               self::$key .= self::$chars[$index_c];
+               $charIndex = rand(0, count(self::$chars) - 1);
+               self::$key .= self::$chars[$charIndex];
             } else {
-                $index_n = rand(0, count(self::$numbers) - 1);
-                self::$key .= self::$numbers[$index_n];
+                $numberIndex = rand(0, count(self::$numbers) - 1);
+                self::$key .= self::$numbers[$numberIndex];
             }
         }
 
