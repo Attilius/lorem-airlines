@@ -3,6 +3,8 @@
 namespace App\Filters\CRUD;
 
 use App\Services\KeyGenerator;
+use App\Models\Filter;
+use Illuminate\Database\Eloquent\Collection;
 
 abstract class BaseFilter implements CrudFilterInterface
 {
@@ -13,25 +15,31 @@ abstract class BaseFilter implements CrudFilterInterface
     /**
      * Create a new filter and add to filter list.
      *
+     * @param string $model
      * @param string $filter
      * @return void
      */
-    public static function add(string $filter): void
+    public static function add(string $model, string $filter): void
     {
         $uniqueId = KeyGenerator::generate(5);
         $filterKey = explode(':', $filter)[0];
 
-        self::$filterHistory[strtolower($filterKey) .'_'. $uniqueId] = $filter;
+        Filter::create([
+            'uid' => strtolower($filterKey) .'_'. $uniqueId,
+            'model' => $model,
+            'filter' => $filter,
+            'is_active' => false,
+        ]);
     }
 
     /**
      * List all filters from history.
      *
-     * @return array
+     * @return Collection
      */
-    public static function get(): array
+    public static function get(): Collection
     {
-        return self::$filterHistory;
+        return Filter::all();
     }
 
     /**
@@ -64,8 +72,7 @@ abstract class BaseFilter implements CrudFilterInterface
     {
         switch ($key) {
             case'all': {
-                self::$filterHistory = [];
-                self::$activeFilters = [];
+                Filter::truncate();
                 break;
             }
             case'reset': {
