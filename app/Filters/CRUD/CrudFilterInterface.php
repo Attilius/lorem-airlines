@@ -2,22 +2,25 @@
 
 namespace App\Filters\CRUD;
 
+use Illuminate\Database\Eloquent\Collection;
+
 interface CrudFilterInterface
 {
     /**
      * Create a new filter and add to filter list.
      *
+     * @param string $model
      * @param string $filter
      * @return void
      */
-    public static function add(string $filter): void;
+    public static function add(string $model, string $filter): void;
 
     /**
      * List all filters from history.
      *
-     * @return array
+     * @return Collection
      */
-    public static function get(): array;
+    public static function get(): Collection;
 
     /**
      * Edit an existing filter.
