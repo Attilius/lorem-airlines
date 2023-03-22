@@ -3,9 +3,9 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Filter\CustomerFilterController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomerFilterController;
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -20,7 +20,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
         Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
         Route::get('/{page}', [PageController::class, 'index'])->name('page');
-        Route::post('/profile', [CustomerFilterController::class, 'index'])->name('customer-filter');
+        Route::post('/profile', [CustomerFilterController::class, 'store'])->name('customer-filter');
         Route::delete('/profile', [CustomerFilterController::class, 'destroy'])->name('filter-delete');
     });
 
