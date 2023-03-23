@@ -25,7 +25,6 @@ class CustomerFilter extends BaseFilter
             self::$columns[] = ucfirst($columnName);
         }
         //self::$columns = Schema::getColumnListing($tableName);
-        //dd(gettype(Schema::getColumnListing($tableName)));
         array_shift(self::$columns);
         $this->setValues();
         #Todo filter values only from [type, country->'if have been', state, city] for select options
