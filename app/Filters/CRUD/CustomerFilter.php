@@ -29,7 +29,7 @@ class CustomerFilter extends BaseFilter
         array_shift(self::$columns);
         $this->setValues();
         //dd($this->getValues());
- #Todo filter values only from [type, country->'if have been', state, city] for select options
+        #Todo filter values only from [type, country->'if have been', state, city] for select options
 
         return ['columns' => self::$columns, 'values' => self::$values];
     }
