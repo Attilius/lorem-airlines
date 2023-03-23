@@ -68,6 +68,5 @@ class CustomerFilter extends BaseFilter
             self::$values[$column] = $this->getUniqueValues($column);
         }
     }
-
 }
 
